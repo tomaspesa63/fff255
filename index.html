@@ -2,35 +2,103 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Countdown</title>
+
 <style>
-body {
-    text-align: center;
-    font-family: Arial, sans-serif;
-    margin-top: 100px;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
 }
-.time {
-    font-size: 40px;
-    margin: 10px;
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color:white;
+    text-align:center;
+}
+
+.container{
+    background: rgba(255,255,255,0.05);
+    padding:40px;
+    border-radius:20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(0,0,0,0.4);
+}
+
+h1{
+    margin-bottom:10px;
+    font-size:32px;
+}
+
+h3{
+    margin-bottom:30px;
+    font-weight:400;
+    color:#ccc;
+}
+
+.countdown{
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.box{
+    background: rgba(255,255,255,0.1);
+    padding:20px 30px;
+    border-radius:15px;
+    min-width:110px;
+    transition:0.3s;
+}
+
+.box:hover{
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.2);
+}
+
+.number{
+    font-size:40px;
+    font-weight:bold;
+}
+
+.label{
+    font-size:14px;
+    margin-top:5px;
+    color:#ddd;
 }
 </style>
 </head>
+
 <body>
 
-<h1>Time remaining</h1>
-<h3>Time remaining until November 25, 2026 – 12:00 AM</h3>
+<div class="container">
+    <h1>⏳ Countdown</h1>
+    <h3>Until November 25, 2026 – 12:00 AM</h3>
 
-<div class="time">
-    <span id="days"></span> Days
-</div>
-<div class="time">
-    <span id="hours"></span> Hours
-</div>
-<div class="time">
-    <span id="minutes"></span> Minutes
-</div>
-<div class="time">
-    <span id="seconds"></span> Seconds
+    <div class="countdown">
+        <div class="box">
+            <div id="days" class="number"></div>
+            <div class="label">Days</div>
+        </div>
+        <div class="box">
+            <div id="hours" class="number"></div>
+            <div class="label">Hours</div>
+        </div>
+        <div class="box">
+            <div id="minutes" class="number"></div>
+            <div class="label">Minutes</div>
+        </div>
+        <div class="box">
+            <div id="seconds" class="number"></div>
+            <div class="label">Seconds</div>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -53,7 +121,7 @@ const x = setInterval(function() {
 
     if (distance < 0) {
         clearInterval(x);
-        document.body.innerHTML = "<h1>EXPIRED</h1>";
+        document.body.innerHTML = "<h1 style='color:white'>🎉 Time's Up!</h1>";
     }
 
 }, 1000);
